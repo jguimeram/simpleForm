@@ -43,7 +43,7 @@ form.addEventListener("submit", (e: Event) => {
   if (validator.isValid()) {
     console.log("data is passing");
   } else {
-    const errorMessages: Array<string> = validator.getErrors();
-    console.log(errorMessages);
+    const errorMessagesArray: Array<string> = validator.getErrors();
+    console.log(errorMessagesArray);
   }
 });
