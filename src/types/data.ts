@@ -3,7 +3,7 @@ export type RegisterType = {
   lastName: string;
   email: string;
   phone: string;
-  country: Countries["id"];
+  country: string;
   password: number;
   checkbox: boolean;
 };

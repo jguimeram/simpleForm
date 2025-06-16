@@ -1,3 +1,4 @@
+import { Validation } from "./classes/Validation";
 import { type RegisterType, type Countries, countries } from "./types/data";
 
 const form = document.querySelector("#registerForm") as HTMLFormElement | null;
@@ -32,11 +33,17 @@ countries.forEach((country: Countries) => {
  * load form submit
  */
 
-const name = "Hello, World";
-
 form.addEventListener("submit", (e: Event) => {
   e.preventDefault();
 
-  const formData = new FormData();
-  console.log(formData);
+  const formData = new FormData(form);
+  const firstName = formData.get("firstName");
+  const validator = new Validation(firstName as string);
+  validator.required().minLength(5).maxLength(10);
+  if (validator.isValid()) {
+    console.log("data is passing");
+  } else {
+    const errorMessages: Array<string> = validator.getErrors();
+    console.log(errorMessages);
+  }
 });
